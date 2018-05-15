@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>MyCDS</title>
+<script src="/plugin/jquery/jquery.js"></script>
+<script src="/plugin/layui/layui.all.js"></script>
+<link rel="stylesheet" href="/plugin/layui/css/layui.css">
+<script src="/plugin/jquery/jquery.js"></script>
+<script src="/plugin/jquery/jquery.serializejson.js"></script>
+<script src="/plugin/jsrender/jsrender.js"></script>
+<script src="/plugin/echarts/echarts.js"></script>
+<link rel="stylesheet" href="/plugin/CSS/template.css">
+<script src="/plugin/JS/bullet.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="navigation" style="width:200px; float:left;"></div>
+  <div id="main" style="width:auto; margin-left:200px;"></div>
+  <script>
+    $(document).ready(function() {
+      $.ajaxSetup({
+        cache : false
+      })
+      $('#navigation').load('/html/common/navigation.html');
+      $('#main').load('/html/common/home.html');
+    });
+  
+    function jump(url) {
+      $.ajaxSetup({
+        cache : false
+      });
+      $('#main').empty();
+      $('#main').load(url);
+    }
+  </script>
+</body>
+
+</html>

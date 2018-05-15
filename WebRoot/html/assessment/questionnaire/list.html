@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>List</title>
+<link rel="stylesheet" href="/plugin/layui/css/layui.css" />
+<script src="/plugin/jquery/jquery.js"></script>
+<script src="/plugin/jquery/jquery.serializejson.js"></script>
+<script src="/plugin/jsrender/jsrender.js"></script>
+</head>
+
+<body>
+  <div class="layui-container" style="width:100%;">
+    <table class="layui-table">
+      <thead>
+        <tr>
+          <th hidden="hidden">Questionnaire ID</th>
+          <th>Theme</th>
+          <th>Title</th>
+          <th hidden="hidden">Style</th>
+          <th hidden="hidden">Status</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody id="questionnaireList">
+      </tbody>
+    </table>
+    <div class="layui-input-inline">
+      <button class="layui-btn" onclick="goBack()" style="display:none">Back</button>
+      <button class="layui-btn" onclick="goAdd()" style="display:none">Add</button>
+    </div>
+  </div>
+  <script id="questionnaire" type="text/x-jsrender">
+    <tr>
+      <td hidden="hidden">{{:questionnaireId}}</td>
+      <td>{{:theme}}</td>
+      <td>{{:title}}</td>
+      <td hidden="hidden">{{:style}}</td>
+      <td hidden="hidden">{{:status}}</td>
+      <td>
+        <button class="layui-btn" onclick="goDetail('{{:questionnaireId}}')">Detail</button>
+        <button class="layui-btn" onclick="goModify('{{:questionnaireId}}')" style="display:none">Modify</button>
+        <button class="layui-btn" onclick="goQuestions('{{:questionnaireId}}')" style="display:none">Questions</button>
+      </td>
+    </tr>
+  </script>
+  <script>
+    $(document).ready(function() {
+      goList();
+    });
+  
+    function goAdd() {
+      sessionStorage.setItem('currentAction', 'create');
+      layui.use('layer', function() {
+        var layer = layui.layer;
+        layer.open({
+          type : 2,
+          id : 'create',
+          title : 'Questionnaire',
+          content : '/html/assessment/questionnaire/edit.html',
+          area : [ '700px', '500px' ],
+          shade : 0.5,
+          closeBtn : false
+        });
+      });
+    }
+  
+    function goModify(questionnaireId) {
+      sessionStorage.setItem('currentAction', 'modify');
+      sessionStorage.setItem('currentQuestionnaireId', questionnaireId);
+      layui.use('layer', function() {
+        var layer = layui.layer;
+        layer.open({
+          type : 2,
+          id : 'modify',
+          title : 'Questionnaire',
+          content : '/html/assessment/questionnaire/edit.html',
+          area : [ '700px', '500px' ],
+          shade : 0.5,
+          closeBtn : false,
+        });
+      });
+    }
+  
+    function goList() {
+      $.ajax({
+        async : false,
+        type : 'GET',
+        url : '/questionnaire/list',
+        success : function(questionnaireList) {
+          $('#questionnaireList').html($.templates('#questionnaire').render(questionnaireList));
+        }
+      });
+    }
+  
+    function goDetail(id) {
+      sessionStorage.setItem('currentQuestionnaireId', id);
+      jump('/html/assessment/questionnaire/detail.html');
+    }
+  
+    function goQuestions(id) {
+      sessionStorage.setItem('currentQuestionnaireId', id);
+      jump('/html/assessment/question/list.html');
+    }
+  
+    function goBack() {
+      jump('/html/common/home.html');
+    }
+  </script>
+</body>
+
+</html>

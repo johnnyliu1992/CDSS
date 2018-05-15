@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Home</title>
+<style>
+table {
+          font-family: arial, sans-serif;
+          font-size: 20;
+          border-collapse: collapse;
+          width: 100%;
+            }         
+      td, th {
+          border: 0px solid gray;
+          text-align: left;
+          padding: 30px;
+          vertical-align: top;
+          line-height: 150%;
+          width: 50%;
+            }
+      h3 {
+          font-family: "Arial Black", Gadget, sans-serif;
+          text-align: center;
+          line-height: 100%;
+            }
+      p {
+          font-size: 14;
+          text-align: center;    
+          }
+</style>
+</head>
+
+<body>
+  <br><br>
+  <h1 align="center">Appointment</h1>
+    
+    <table>
+      <tr>
+      <td>
+      <h3>Provider Preference</h3>
+      
+      Specialty: <input type="text" style='width:100%' placeholder="e.g. colon, rectal, anal... "><br><br>
+      
+      <input type="radio" name="gender">Male
+              <input type="radio" name="gender">Female<br><br>
+      
+      Preferred Healthcare Organization: <input type="text" style='width:100%' placeholder="e.g. IU Health, St Vincent..."><br><br>
+      
+      <h3>Location Preference</h3>
+      
+      City or Zipcode: <input type="text" style='width:100%' placeholder="e.g. Indianapolis, 46202... "><br><br>
+      
+      Radius:&emsp;<input type="text" style='width:50px'> miles from me.<br><br>
+      
+      <h3>Patient Insurance Plan</h3>
+      
+      <input type="text" style='width:100%' placeholder="Please type in your insurance plan number.">
+      
+      </td>
+      
+      <td>
+      
+      <h3>Appointment Time</h3>
+
+      From: <br><input type="text" style="width: 40px;" placeholder="MM">&emsp;/&emsp;<input type="text" style="width: 40px;" placeholder="DD">&emsp;/&emsp;<input type="text" style="width: 60px;"placeholder="YYYY"><br><br>
+      To: <br><input type="text" style="width: 40px;" placeholder="MM">&emsp;/&emsp;<input type="text" style="width: 40px;" placeholder="DD">&emsp;/&emsp;<input type="text" style="width: 60px;"placeholder="YYYY"><br><br>
+      
+      Time Preference: &emsp;<input type="radio" name="gender">Morning&emsp;
+              <input type="radio" name="gender">Afternoon<br><br><br><br><br><br>
+      
+      <center><a href="{% url 'appoconfirm' %}" type="button" class="layui-btn layui-btn-radius">Submit</a></center>
+      <p>(To list the providers satisfying your requests.)</p>
+      </td>
+      </tr>
+    </table>
+</body>
+
+</html>

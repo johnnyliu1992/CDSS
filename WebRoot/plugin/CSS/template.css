@@ -1,0 +1,22 @@
+h3 {
+  font-family: "Arial Black", Gadget, sans-serif;
+  text-align: center;
+  font-size: 80;
+}
+
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: .5px; }
+.bullet .range.s0 { fill: #78281F; }
+.bullet .range.s1 { fill: #943126; }
+.bullet .range.s2 { fill: #B03A2E; }
+.bullet .range.s3 { fill: #CB4335; }
+.bullet .range.s4 { fill: #E74C3C; }
+.bullet .range.s5 { fill: #EC7063; }
+.bullet .range.s6 { fill: #F1948A; }
+.bullet .range.s7 { fill: #F5B7B1; }
+.bullet .range.s8 { fill: #FADBD8; }
+.bullet .range.s9 { fill: #FDEDEC; }
+.bullet .measure.s0 { fill: #7F8C8D; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #999; }
